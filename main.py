@@ -10,8 +10,7 @@ class ChainLinkBlock:
         self.txlist = txlist
         self.nonce = 0
 
-        self.txhashed = merkle_root.tx_encrypt(txlist)
-        self.txsingle_hash = merkle_root.findMerkleRoot(self.txhashed)
+        self.txsingle_hash = merkle_root.findMerkleRoot(txlist)
 
         while(True):
             self.block_data = previous_block_hash + "\n" + self.txsingle_hash + "\n" + str(self.nonce)
@@ -21,7 +20,7 @@ class ChainLinkBlock:
             self.nonce += 1
 
 
-new_block = ChainLinkBlock("0000", ["Martin Sends Gina Hello World", "Martin Sends Gina Hello Worl", "Martin Sends Gina Hello Wold"])
+new_block = ChainLinkBlock("0000", ["1", "2"])
 
 print()
 print('\033[95m' + "Hash Found: " + '\033[92m' + new_block.block_hash + '\033[0m')
