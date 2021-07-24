@@ -20,7 +20,7 @@ class ChainLinkBlock:
             self.nonce += 1
 
 
-new_block = ChainLinkBlock("000", ["1", "2"])
+new_block = ChainLinkBlock("0000", ["1", "2"])
 
 print()
 print('\033[95m' + "Hash Found: " + '\033[92m' + new_block.block_hash + '\033[0m')
