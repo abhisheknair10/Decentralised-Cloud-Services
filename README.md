@@ -1,6 +1,6 @@
-# DeCS Storage
+# DeCS Services
 
 ## Introduction
-### DeCS Storage is a decentralised cloud infrastructure that can store your personal and important data on the cloud. 
+### DeCS Services (Decentralised Cloud Solutions Services) is a cloud infrastructure that can store your personal and important data, host websites, run SQL Databases and more, all on a Decentralised Cloud Network (DCN).
 
-### The data is not stored on any dedicated DeCS data server, but is rather saved on multiple decentralised nodes that are active on the DeCS Network. The data is always encrypted during storage and transmission. Your data is only decrypted when it is recieved by the user on their authorized device.
+### Your data is not stored on any dedicated DeCS data server, but is rather saved on multiple decentralised nodes that are active on the DeCS Network. Your data is always encrypted during storage at our DeCS Node Servers and is decrypted only at the client end. This means that if a particular DeCS Node fails, your data is still accessible to you provided you have a device connected to the internet.
