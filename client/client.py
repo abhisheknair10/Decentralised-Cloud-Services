@@ -9,13 +9,19 @@ import time
 SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 4096 # send 4096 bytes each time step
 
-class connectToServer:
+class uploadFile:
     def __init__(self, serverIP, port):
         self.serverIP = serverIP
         self.port     = port
         filename      = None
         filesize      = None
         s             = None
+
+        self.getFileDir()
+        self.openConnection(self.serverIP, self.port)
+        self.fileMetaData()
+        self.sendFile()
+        self.closeConnection()
 
 
     def getFileDir(self):
@@ -50,11 +56,5 @@ class connectToServer:
         self.s.close()
 
 
-uploadToCloud = connectToServer("2001:8f8:1329:8bd6:395a:7165:671e:3a13", 5001)
-uploadToCloud.getFileDir()
-uploadToCloud.openConnection(uploadToCloud.serverIP, uploadToCloud.port)
-uploadToCloud.fileMetaData()
-uploadToCloud.sendFile()
-uploadToCloud.closeConnection()
-
+uploadToCloud = uploadFile("2001:8f8:1329:8bd6:395a:7165:671e:3a13", 5001)
 del uploadToCloud

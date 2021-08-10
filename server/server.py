@@ -6,7 +6,7 @@ from pathlib import Path
 SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 4096 # receive 4096 bytes each time
 
-class connectToClient:
+class recieveToCloud:
     def __init__(self, IP, port):
         self.IP       = IP
         self.port     = port
@@ -16,6 +16,11 @@ class connectToClient:
         filename      = None
         filesize      = None
         recieved      = None
+
+        self.openConnection()
+        self.fileMetaData()
+        self.recFile()
+        self.closeConnection()
 
 
     def openConnection(self):
@@ -52,10 +57,5 @@ class connectToClient:
         self.s.close()
 
 
-recieve = connectToClient("::", 5001)
-recieve.openConnection()
-recieve.fileMetaData()
-recieve.recFile()
-recieve.closeConnection()
-
+recieve = recieveToCloud("::", 5001)
 del recieve
