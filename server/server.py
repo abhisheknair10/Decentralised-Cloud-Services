@@ -3,52 +3,59 @@ import tqdm
 import os
 from pathlib import Path
 
-# device's IP address
-SERVER_HOST = "::"
-SERVER_PORT = 5001
-
-BUFFER_SIZE = 4096 # receive 4096 bytes each time
 SEPARATOR = "<SEPARATOR>"
+BUFFER_SIZE = 4096 # receive 4096 bytes each time
 
-# create the server socket
-s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+class connectToClient:
+    def __init__(self, IP, port):
+        self.IP       = IP
+        self.port     = port
+        s             = None
+        client_socket = None
+        address       = None
+        filename      = None
+        filesize      = None
+        recieved      = None
 
-# bind the socket to our local address
-s.bind((SERVER_HOST, SERVER_PORT))
 
-# enabling our server to accept connections
-s.listen(5)
-print(f"[*] Listening as {SERVER_HOST}:{SERVER_PORT}")
+    def openConnection(self):
+        self.s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+        self.s.bind((self.IP, self.port))
+        self.s.listen(5)
+        print(f"[*] Listening as {self.IP}:{self.port}")
+        self.client_socket, self.address = self.s.accept()
+        self.address = self.address[0]
+        print(f"[+] {self.address} is connected")
 
-client_socket, address = s.accept()
-address = address[0]
 
-print(f"[+] {address} is connected.")
+    def fileMetaData(self):
+        self.recieved = self.client_socket.recv(BUFFER_SIZE).decode()
+        self.filename, self.filesize = self.recieved.split(SEPARATOR)
+        self.filename = os.path.basename(self.filename)
+        self.filesize = int(self.filesize)
 
-# receive the file infos
-received = client_socket.recv(BUFFER_SIZE).decode()
-filename, filesize = received.split(SEPARATOR)
 
-# remove absolute path if there is
-filename = os.path.basename(filename)
-# convert to integer
-filesize = int(filesize)
+    def recFile(self):
+        home = str(Path.home())
+        with open(f"{home}/Downloads/{self.filename}", "wb") as f:
+           while True:
+               bytes_read = self.client_socket.recv(BUFFER_SIZE)
+               if not bytes_read:
+                   print("\033[92mFile Recieved Successfully \033[0m")
+                   break
 
-# start receiving the file from the socket
-progress = tqdm.tqdm(range(filesize), f"Receiving {filename}", unit="B", unit_scale=True, unit_divisor=1024)
+               f.write(bytes_read)
 
-home = str(Path.home())
-with open(f"{home}/Downloads/123{filename}", "wb") as f:
-   while True:
-       bytes_read = client_socket.recv(BUFFER_SIZE)
-       if not bytes_read:
-           break
-       
-       f.write(bytes_read)
 
-       progress.update(len(bytes_read))
+    def closeConnection(self):
+        self.client_socket.close()
+        self.s.close()
 
-# close the client socket
-client_socket.close()
-# close the server socket
-s.close()
+
+recieve = connectToClient("::", 5001)
+recieve.openConnection()
+recieve.fileMetaData()
+recieve.recFile()
+recieve.closeConnection()
+
+del recieve
