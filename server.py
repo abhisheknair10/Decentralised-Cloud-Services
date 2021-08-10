@@ -38,14 +38,14 @@ filesize = int(filesize)
 progress = tqdm.tqdm(range(filesize), f"Receiving {filename}", unit="B", unit_scale=True, unit_divisor=1024)
 
 home = str(Path.home())
-with open(f"{home}/Downloads/{filename}", "wb") as f:
+with open(f"{home}/Downloads/123{filename}", "wb") as f:
    while True:
        bytes_read = client_socket.recv(BUFFER_SIZE)
        if not bytes_read:
            break
        
        f.write(bytes_read)
-       
+
        progress.update(len(bytes_read))
 
 # close the client socket
