@@ -2,6 +2,7 @@ import socket
 import tqdm
 import os
 from pathlib import Path
+
 # device's IP address
 SERVER_HOST = "::"
 SERVER_PORT = 5001
