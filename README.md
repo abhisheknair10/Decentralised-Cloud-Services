@@ -1,7 +1,7 @@
 # DeCS
 
 ## Introduction
-#### The internet has enabled us to connect with people around the globe and share huge amounts of data quickly and efficiently. It has been the key formula for the growth of organizations in various industries including Healthcare, Technology, Construction and many more. 
+##### The internet has enabled us to connect with people around the globe and share huge amounts of data quickly and efficiently. It has been the key formula for the growth of organizations in various industries including Healthcare, Technology, Construction and many more. 
 ### 
 #### A Decentralised Cloud Service (DeCS) can ensure to meet the increasing demands of the internet while maintaining user privacy. It can store personal and important data, host websites, run SQL Databases and more, all on a Decentralised Cloud Network.
 
