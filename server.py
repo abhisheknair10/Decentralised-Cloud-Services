@@ -3,18 +3,18 @@ import tqdm
 import os
 from pathlib import Path
 # device's IP address
-SERVER_HOST = "0.0.0.0"
+SERVER_HOST = "::"
 SERVER_PORT = 5001
 # receive 4096 bytes each time
-BUFFER_SIZE = 4096
+BUFFER_SIZE = 406
 SEPARATOR = "<SEPARATOR>"
 
 # create the server socket
 # TCP socket
-s = socket.socket()
+s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM, 0)
 
 # bind the socket to our local address
-s.bind((SERVER_HOST, SERVER_PORT))
+s.bind((SERVER_HOST, SERVER_PORT, 0, 0))
 
 # enabling our server to accept connections
 # 5 here is the number of unaccepted connections that
