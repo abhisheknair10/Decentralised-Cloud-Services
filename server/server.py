@@ -42,7 +42,7 @@ class recieveToCloud:
 
     def recFile(self):
         home = str(Path.home())
-        with open(f"{home}/Downloads/{self.filename}", "wb") as f:
+        with open(f"{home}/server_files/{self.filename}", "wb") as f:
            while True:
                bytes_read = self.client_socket.recv(BUFFER_SIZE)
                if not bytes_read:
