@@ -6,7 +6,7 @@ SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 4096 # send 4096 bytes each time step
 
 # the ip address or hostname of the server, the receiver
-host = "2001:8f8:1329:8bd6:a0b9:8133:c18a:9016"
+host = "2001:8f8:1329:8bd6:395a:7165:671e:3a13"
 # the port, let's use 5001
 port = 5001
 # the name of file we want to send, make sure it exists
@@ -15,10 +15,10 @@ filename = "Abhishek Nair - Resume.pdf"
 filesize = os.path.getsize(filename)
 
 # create the client socket
-s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM, 0)
+s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
 
 print(f"[+] Connecting to {host}:{port}")
-s.connect((host, port, 0, 0))
+s.connect((host, port))
 print("[+] Connected.")
 
 # send the filename and filesize

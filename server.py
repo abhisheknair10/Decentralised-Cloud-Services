@@ -11,10 +11,10 @@ SEPARATOR = "<SEPARATOR>"
 
 # create the server socket
 # TCP socket
-s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM, 0)
+s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
 
 # bind the socket to our local address
-s.bind((SERVER_HOST, SERVER_PORT, 0, 0))
+s.bind((SERVER_HOST, SERVER_PORT))
 
 # enabling our server to accept connections
 # 5 here is the number of unaccepted connections that
