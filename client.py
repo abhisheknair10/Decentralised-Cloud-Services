@@ -6,7 +6,7 @@ SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 4096 # send 4096 bytes each time step
 
 # the ip address or hostname of the server, the receiver
-host = "2001:8f8:1329:8bd6:395a:7165:671e:3a13"
+host = "2001:8f8:1329:8bd6:2d74:8b37:c3e3:8796"
 # the port, let's use 5001
 port = 5001
 # the name of file we want to send, make sure it exists
