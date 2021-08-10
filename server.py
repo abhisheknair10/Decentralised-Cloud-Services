@@ -25,6 +25,7 @@ print(f"[*] Listening as {SERVER_HOST}:{SERVER_PORT}")
 
 # accept connection if there is any
 client_socket, address = s.accept()
+address = address[0]
 # if below code is executed, that means the sender is connected
 print(f"[+] {address} is connected.")
 
