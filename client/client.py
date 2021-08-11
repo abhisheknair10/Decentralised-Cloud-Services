@@ -25,9 +25,9 @@ class uploadFile:
 
 
     def getFileDir(self):
+        os.chdir("/")
         home = str(Path.home())
-        file_dir = input(f"Enter Directory: {home}/")
-        self.filename = f"{home}/{file_dir}"
+        self.filename = input(f"Enter Directory:")
         self.filesize = os.path.getsize(self.filename)
 
 
