@@ -43,13 +43,13 @@ class recieveToCloud:
     def recFile(self):
         home = str(Path.home())
         with open(f"{home}/server_files/{self.filename}", "wb") as f:
-           while True:
-               bytes_read = self.client_socket.recv(BUFFER_SIZE)
-               if not bytes_read:
-                   print("\033[92mFile Recieved Successfully \033[0m")
-                   break
-
-               f.write(bytes_read)
+            while True:
+                bytes_read = self.client_socket.recv(BUFFER_SIZE)
+                if not bytes_read:
+                    print("\033[92mFile Recieved Successfully \033[0m")
+                    break
+                        
+                f.write(bytes_read)
 
 
     def closeConnection(self):

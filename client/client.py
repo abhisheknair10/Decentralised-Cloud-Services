@@ -6,6 +6,9 @@ import time
 
 #import aes
 
+CURRENT_DIR = os.getcwd()
+os.chdir("/")
+
 SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 4096 # send 4096 bytes each time step
 
@@ -25,7 +28,6 @@ class uploadFile:
 
 
     def getFileDir(self):
-        os.chdir("/")
         home = str(Path.home())
         self.filename = input(f"Enter Directory:")
         self.filesize = os.path.getsize(self.filename)
@@ -58,5 +60,5 @@ class uploadFile:
         self.s.close()
 
 
-uploadToCloud = uploadFile("2001:8f8:1329:8bd6:395a:7165:671e:3a13", 5001)
+uploadToCloud = uploadFile("2001:8f8:1329:8bd6:7429:1b56:f622:70d3", 5001)
 del uploadToCloud
