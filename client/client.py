@@ -56,7 +56,7 @@ class uploadFile:
 
                 #encrypted = aes.encrypt(str(bytes_read), aes.password) # encrypt data
                 #s.sendall(encrypted)
-                self.s.sendall(bytes(bytes_read))
+                self.s.sendall(bytes_read)
     
     def closeConnection(self):
         self.s.close()
