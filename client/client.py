@@ -42,6 +42,7 @@ class uploadFile:
 
     def fileMetaData(self):
         self.s.send(f"{self.filename}{SEPARATOR}{self.filesize}".encode())
+        time.sleep(0.5)
 
 
     def sendFile(self):
@@ -61,5 +62,5 @@ class uploadFile:
         self.s.close()
 
 
-uploadToCloud = uploadFile("2001:8f8:1329:8bd6:45ff:11e:c54a:3280", 5001)
+uploadToCloud = uploadFile("2001:8f8:1329:8bd6:e0e4:40b8:79:a909", 5001)
 del uploadToCloud
