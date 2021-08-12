@@ -62,5 +62,11 @@ class uploadFile:
         self.s.close()
 
 
-uploadToCloud = uploadFile("2001:8f8:1329:8bd6:e0e4:40b8:79:a909", 5001)
-del uploadToCloud
+
+print("To Upload a File to the Cloud, Enter: u")
+print("To Download a File from the Cloud, Enter: d")
+service = input("Enter Service: ")
+
+if (service == "u"):
+    uploadToCloud = uploadFile("2001:8f8:1329:8bd6:e0e4:40b8:79:a909", 5001)
+    del uploadToCloud
