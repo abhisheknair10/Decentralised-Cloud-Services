@@ -67,6 +67,5 @@ print("To Upload a File to the Cloud, Enter: u")
 print("To Download a File from the Cloud, Enter: d")
 service = input("Enter Service: ")
 
-if (service == "u"):
-    uploadToCloud = uploadFile("2001:8f8:1329:8bd6:e0e4:40b8:79:a909", 5001)
-    del uploadToCloud
+uploadToCloud = uploadFile("2001:8f8:1329:8bd6:3c51:b988:9bb3:d14b", 5001)
+del uploadToCloud
