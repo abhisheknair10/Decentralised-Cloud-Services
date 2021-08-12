@@ -49,16 +49,17 @@ class uploadFile:
             while True:
                 bytes_read = f.read(BUFFER_SIZE)
                 if not bytes_read:
+                    self.s.close()
                     print("\033[92mFile Sent Successfully \033[0m")
                     break
 
                 #encrypted = aes.encrypt(str(bytes_read), aes.password) # encrypt data
                 #s.sendall(encrypted)
-                self.s.sendall(bytes_read)
+                self.s.sendall(bytes(bytes_read))
     
     def closeConnection(self):
         self.s.close()
 
 
-uploadToCloud = uploadFile("2001:8f8:1329:8bd6:7429:1b56:f622:70d3", 5001)
+uploadToCloud = uploadFile("2001:8f8:1329:8bd6:45ff:11e:c54a:3280", 5001)
 del uploadToCloud

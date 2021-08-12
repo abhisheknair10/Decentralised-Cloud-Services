@@ -46,9 +46,11 @@ class recieveToCloud:
             while True:
                 bytes_read = self.client_socket.recv(BUFFER_SIZE)
                 if not bytes_read:
+                    self.client_socket.close()
+                    self.s.close()
                     print("\033[92mFile Recieved Successfully \033[0m")
                     break
-                        
+
                 f.write(bytes_read)
 
 
