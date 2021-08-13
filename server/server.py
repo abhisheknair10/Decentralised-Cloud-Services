@@ -30,7 +30,7 @@ class recieveToCloud:
         print(f"[*] Listening as {self.IP}:{self.port}")
         self.client_socket, self.address = self.s.accept()
         self.address = self.address[0]
-        print(f"[+] {self.address} is connected")
+        print(f"\033[92m[+] {self.address} is connected\033[0m")
 
 
     def fileMetaData(self):

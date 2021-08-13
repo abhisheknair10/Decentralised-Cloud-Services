@@ -37,7 +37,7 @@ class uploadFile:
         self.s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
         print(f"[+] Connecting to {self.serverIP}:{self.port}")
         self.s.connect((self.serverIP, self.port))
-        print("[+] Connected.")
+        print("\033[92m[+] Connected.\033[0m")
 
 
     def fileMetaData(self):
@@ -51,7 +51,7 @@ class uploadFile:
                 bytes_read = f.read(BUFFER_SIZE)
                 if not bytes_read:
                     self.s.close()
-                    print("\033[92mFile Sent Successfully \033[0m")
+                    print("\033[92mFile Sent Successfully\033[0m")
                     break
 
                 #encrypted = aes.encrypt(str(bytes_read), aes.password) # encrypt data
@@ -67,5 +67,5 @@ print("To Upload a File to the Cloud, Enter: u")
 print("To Download a File from the Cloud, Enter: d")
 service = input("Enter Service: ")
 
-uploadToCloud = uploadFile("2001:8f8:1329:8bd6:3c51:b988:9bb3:d14b", 5001)
+uploadToCloud = uploadFile("2001:8f8:1329:8bd6:6189:ec78:4de9:422c", 5001)
 del uploadToCloud
