@@ -38,7 +38,7 @@ class serviceUpload:
     
     def openConnection(self):
         self.s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
-        print(f"[+] Connecting to {self.serverIP}:{self.port}")
+        print(f"\033[93m[+] Connecting to {self.serverIP}:{self.port}\033[0m")
         self.s.connect((self.serverIP, self.port))
         print("\033[92m[+] Connected to Server\033[0m")
 
@@ -50,13 +50,13 @@ class serviceUpload:
 
     
     def confirmationFromServer(self):
-        print("[+] Waiting for Confirmation from Server...")
+        print("\033[93m[+] Waiting for Confirmation from Server...\033[0m")
         confirmationValue = self.s.recv(BUFFER_SIZE).decode()
-        print("\033[92m[+] Confirmation from Server Recieved\033[0m")
         return confirmationValue
     
 
     def sendFile(self):
+        print("\033[93m[+] Uploading File to Cloud...\033[0m")
         with open(f"{self.filename}", "rb") as f:
             while True:
                 bytes_read = f.read(BUFFER_SIZE)

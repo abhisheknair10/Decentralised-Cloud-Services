@@ -18,6 +18,10 @@ print("For Uploading File to Cloud, Enter 'u'")
 print("For Downloading File from  Cloud, Enter 'd'")
 service = input("Enter Service: ")
 
-if(service == "u"):
-    uploadToCloud = serviceUpload.serviceUpload("2001:8f8:1329:8bd6:4885:1b08:ced8:9a25", 5001)
+ip = "2001:8f8:1329:8bd6:5db8:b877:7d08:4a61"
+port = 5001
 
+if(service == "u"):
+    uploadToCloud = serviceUpload.serviceUpload(ip, port)
+elif(service == "d"):
+    downloadFromCloud = serviceDownload.serviceDownload(ip, port)

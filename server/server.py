@@ -39,7 +39,7 @@ class server:
         self.s = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
         self.s.bind((self.IP, self.port))
         self.s.listen(5)
-        print(f"[*] Listening as {self.IP}:{self.port}")
+        print(f"\033[93m[+] Listening as {self.IP}:{self.port}\033[0m")
         self.client_socket, self.address = self.s.accept()
         self.address = self.address[0]
         print(f"\033[92m[+] {self.address} is connected\033[0m")
@@ -50,11 +50,11 @@ class server:
         self.filename, self.filesize, self.service = self.recieved.split(SEPARATOR)
         self.filename = os.path.basename(self.filename)
         self.filesize = int(self.filesize)
-        print("[+] Recieved File Meta Data")
+        print("\033[92m[+] Recieved File Meta Data\033[0m")
 
     
     def recFile(self):
-        print("[+] Recieiving File Contents...")
+        print("\033[93m[+] Recieiving File Contents...\033[0m")
         self.home = str(Path.home())
         with open(f"{self.home}/server_files/{self.filename}", "wb") as f:
             while True:
