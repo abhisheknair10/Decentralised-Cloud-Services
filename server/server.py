@@ -18,16 +18,17 @@ class server:
         filename      = None
         filesize      = None
         recieved      = None
+        home          = None 
 
         self.openConnection()
-        serviceVal = self.serviceRequest()
-        if(self.serviceRequest == "10711"):
-            self.s.send("10711".encode())
+        self.serviceRequest()
+        if(self.service == "u"):
+            ok = "ok"
+            self.client_socket.send(f"{ok}".encode())
             self.recFile()
-            if(self.filename == os.path.getsize(f"{home}/server_files/{self.filename}")):
-                print("\033[92mFile Recieved Successfully \033[0m")
-            else:
-                print("\033[91mOOPS. Something Went Wrong\033[0m")
+            print("\033[92m[+] File Recieved Successfully \033[0m")
+        elif(self.service == "d"):
+            print("Download")
         else:
             print("\033[91mOOPS. Something Went Wrong\033[0m")
         
@@ -49,21 +50,19 @@ class server:
         self.filename, self.filesize, self.service = self.recieved.split(SEPARATOR)
         self.filename = os.path.basename(self.filename)
         self.filesize = int(self.filesize)
-        return self.service
+        print("[+] Recieved File Meta Data")
 
     
     def recFile(self):
-        home = str(Path.home())
-        with open(f"{home}/server_files/{self.filename}", "wb") as f:
+        print("[+] Recieiving File Contents...")
+        self.home = str(Path.home())
+        with open(f"{self.home}/server_files/{self.filename}", "wb") as f:
             while True:
                 bytes_read = self.client_socket.recv(BUFFER_SIZE)
                 if not bytes_read:
-                    time.sleep(0.5)
-                    self.s.send(os.path.getsize(f"{home}/server_files/{self.filename}").encode())
                     break
 
                 f.write(bytes_read)
-
 
     
     def closeConnection(self):

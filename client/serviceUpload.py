@@ -4,6 +4,8 @@ import os
 from pathlib import Path
 import time
 
+#/Users/abhisheknair/Desktop/Abhishek Nair Resume.pdf
+
 SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 4096 # send 4096 bytes each time step
 
@@ -19,17 +21,14 @@ class serviceUpload:
         self.openConnection()
         self.metaData()
         confVal = self.confirmationFromServer()
-        if(confVal == "7975"):
+        if(confVal == "ok"):
+            print("\033[92m[+] Server Ready to Recieve Data\033[0m")
             self.sendFile()
-            filesizeVal = self.checkFileSizeRecieved()
-            if(filesizeVal == self.filesize):
-                print("\033[92mFile Sent Successfully\033[0m")
-            else:
-                print("\033[91mOOPS. Something Went wrong when Uploading the File\033[0m")
+            print("\033[92m[+] File Sent Successfully\033[0m")
         else:
             print("\033[91mOOPS. Something Went Wrong\033[0m")
         
-        self.s.closeConnection()
+        self.closeConnection()
     
     
     def getFileDir(self):
@@ -45,14 +44,15 @@ class serviceUpload:
 
     
     def metaData(self):
-        self.s.send(f"{self.filename}{SEPARATOR}{self.filesize}{SEPARATOR}10711".encode())
+        code = "u"
+        self.s.send(f"{self.filename}{SEPARATOR}{self.filesize}{SEPARATOR}{code}".encode())
         time.sleep(0.5)
 
     
     def confirmationFromServer(self):
         print("[+] Waiting for Confirmation from Server...")
-        confirmationValue = self.s.accept()
-        confirmationValue = confirmationValue.recv(BUFFER_SIZE).decode().split(SEPARATOR)
+        confirmationValue = self.s.recv(BUFFER_SIZE).decode()
+        print("\033[92m[+] Confirmation from Server Recieved\033[0m")
         return confirmationValue
     
 
@@ -62,17 +62,9 @@ class serviceUpload:
                 bytes_read = f.read(BUFFER_SIZE)
                 if not bytes_read:
                     break
-
                 #encrypted = aes.encrypt(str(bytes_read), aes.password) # encrypt data
                 #s.sendall(encrypted)
                 self.s.sendall(bytes_read)
-
-
-    def checkFileSizeRecieved(self):
-        print("[+] Confirming Upload to Server...")
-        filesizeVal = self.s.accept()
-        filesizeVal = filesizeVal.recv(BUFFER_SIZE).decode().split(SEPARATOR)
-        return filesizeVal
 
     
     def closeConnection(self):

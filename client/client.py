@@ -19,4 +19,5 @@ print("For Downloading File from  Cloud, Enter 'd'")
 service = input("Enter Service: ")
 
 if(service == "u"):
-    uploadToCloud = serviceUpload.serviceUpload("2001:8f8:1329:8bd6:6189:ec78:4de9:422c", 5001)
+    uploadToCloud = serviceUpload.serviceUpload("2001:8f8:1329:8bd6:4885:1b08:ced8:9a25", 5001)
+
