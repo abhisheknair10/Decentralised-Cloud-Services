@@ -21,7 +21,7 @@ class serviceUpload:
         self.openConnection()
         self.metaData()
         confVal = self.confirmationFromServer()
-        if(confVal == "ok"):
+        if(confVal == "rec"):
             print("\033[92m[+] Server Ready to Recieve Data\033[0m")
             self.sendFile()
             print("\033[92m[+] File Sent Successfully\033[0m")

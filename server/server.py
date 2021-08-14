@@ -23,8 +23,8 @@ class server:
         self.openConnection()
         self.serviceRequest()
         if(self.service == "u"):
-            ok = "ok"
-            self.client_socket.send(f"{ok}".encode())
+            readyRec = "rec"
+            self.client_socket.send(f"{readyRec}".encode())
             self.recFile()
             print("\033[92m[+] File Recieved Successfully \033[0m")
         elif(self.service == "d"):
