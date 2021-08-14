@@ -4,7 +4,6 @@ import os
 from pathlib import Path
 import time
 
-#/Users/abhisheknair/Desktop/Abhishek Nair Resume.pdf
 
 SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 4096 # send 4096 bytes each time step

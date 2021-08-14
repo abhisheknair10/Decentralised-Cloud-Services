@@ -5,6 +5,7 @@ from pathlib import Path
 import time
 
 import serviceUpload
+import serviceDownload
 #import aes
 
 
@@ -25,3 +26,5 @@ if(service == "u"):
     uploadToCloud = serviceUpload.serviceUpload(ip, port)
 elif(service == "d"):
     downloadFromCloud = serviceDownload.serviceDownload(ip, port)
+else:
+    print("Invalid Service")

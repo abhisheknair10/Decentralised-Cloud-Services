@@ -28,7 +28,7 @@ class server:
             self.recFile()
             print("\033[92m[+] File Recieved Successfully \033[0m")
         elif(self.service == "d"):
-            print("Download")
+            self.sendFile()
         else:
             print("\033[91mOOPS. Something Went Wrong\033[0m")
         
@@ -65,6 +65,20 @@ class server:
                 f.write(bytes_read)
 
     
+    def sendFile(self):
+        print("\033[93m[+] Sending File to Client...\033[0m")
+        self.home = str(Path.home())
+        with open(f"{self.home}/server_files/{self.filename}", "rb") as f:
+            while True:
+                bytes_read = f.read(BUFFER_SIZE)
+                if not bytes_read:
+                    print("\033[92mFile has been Sent Successfuly\033[0m")
+                    break
+                #encrypted = aes.encrypt(str(bytes_read), aes.password) # encrypt data
+                #s.sendall(encrypted)
+                self.client_socket.sendall(bytes_read)
+
+
     def closeConnection(self):
         self.client_socket.close()
         self.s.close()
