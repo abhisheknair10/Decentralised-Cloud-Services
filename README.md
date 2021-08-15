@@ -1,4 +1,4 @@
-# DeCS
+# Decentralised Cloud Services
 
 ## Introduction
 #### The internet has enabled us to connect with people around the globe and share huge amounts of data quickly and efficiently. It has been the key formula for the growth of organizations in various industries including Healthcare, Technology, Construction and many more. 
